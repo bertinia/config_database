@@ -1,0 +1,38 @@
+PRAGMA foreign_keys=OFF;
+
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS `t_machines`;
+
+CREATE TABLE `t_machines` (
+  `machine_id` integer NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `description` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`machine_id`)
+);
+
+INSERT INTO `t_machines` 
+       (machine_id, name, description)
+VALUES (1,'babbage','https://www.nersc.gov/users/computational-systems/testbeds/babbage'),
+       (2,'babbageKnc','https://www.nersc.gov/users/computational-systems/testbeds/babbage'),
+       (3,'bluewaters','http://ncsa.illinois.edu/BlueWaters'),
+       (4,'brutus',NULL),
+       (5,'eastwind',NULL),
+       (6,'edison','http://www.nersc.gov/users/computational-systems/edison/'),
+       (7,'eos','http://www.nccs.gov'),
+       (8,'erebus',NULL),
+       (9,'gaea',NULL),
+       (10,'goldbach',NULL),
+       (11,'hopper','http://www.nersc.gov/users/computational-systems/hopper/'),
+       (12,'janus','https://www.rc.colorado.edu/systems/supercomputer'),
+       (13,'mira','https://www.alcf.anl.gov/mira'),
+       (14,'olympus',NULL),
+       (15,'pleiades','http://www.nas.nasa.gov/Resources/Systems/pleiades.html'),
+       (16,'pleiades-westmere',NULL),
+       (17,'sierra',NULL),
+       (18,'stampede',NULL),
+       (19,'rosa',NULL),
+       (20,'yellowstone','http://www2.cisl.ucar.edu/resources/yellowstone'),
+       (21,'zeus','http://www.esrl.noaa.gov/gsd/media/hotitems/2012/12Apr23.html');
+
+COMMIT;

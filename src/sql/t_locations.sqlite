@@ -1,0 +1,33 @@
+PRAGMA foreign_keys=OFF;
+
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS `t_locations`;
+
+CREATE TABLE `t_locations` (
+  `location_id` integer NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `short_name` varchar(2) DEFAULT NULL,
+  `description` varchar(100) DEFAULT NULL,
+  `URL` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`location_id`)
+);
+
+INSERT INTO `t_locations` 
+       (location_id, name, short_name, description, URL)
+VALUES (1,'NCAR','NC','National Center for Atmospheric Research - Boulder','http://www2.cisl.ucar.edu'),
+       (2,'NERSC - LBNL','NE','National Energy Research Scientific Computing Center - Lawrence Berkeley National Lab','http://www.nersc.gov'),
+       (3,'NCCS - ORNL','OR','National Center for Computational Sciences - Oak Ridge National Lab','http://www.nccs.gov'),
+       (4,'NASA','NA','National Aeronautics and Space Administration','http://www.nasa.gov'),
+       (5,'LANL','','Los Alamos National Laboratory','http://www.lanl.gov'),
+       (6,'CU','CU','University of Colorado','http://www.colorado.edu'),
+       (8,'NCSA','','National Center for Supercomputing Applications - University of Illinois','http://ncsa.illinois.edu'),
+       (9,'ETH','ET','Swiss Federal Institute of Technology Zurich','https://www.ethz.ch/en.html'),
+       (10,'LLNL','LL','Lawrence Livermore National Laboratory','http://www.llnl.gov'),
+       (11,'ANL','','Argonne National Laboratory','http://www.alcf.anl.gov'),
+       (12,'PNL','','Pacific Northwest National Laboratory','http://www.pnnl.gov'),
+       (13,'NCRC - ORNL',NULL,'National Climate-Computing Research Center','http://www.ornl.gov'),
+       (14,'TACC','TA','Texas Advanced Computing Center','http://www.utexas.edu'),
+       (15,'NOAA','','National Oceanic and Atmospheric Administration - Earth Systems Research Laboratory','http://www.noaa.gov');
+
+COMMIT;

@@ -1,0 +1,12 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+
+CREATE VIEW ncar_machines 
+AS SELECT l.name, m.name, l.description 
+FROM t_machines AS m, t_locations AS l, t_machines_locations AS j
+WHERE m.machine_id = j.machine_id 
+AND l.location_id = j.location_id 
+AND l.name like '%NCAR%';
+
+
+COMMIT;
