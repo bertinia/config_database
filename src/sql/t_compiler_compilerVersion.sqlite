@@ -1,0 +1,10 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+
+INSERT INTO "t_compiler_compilerVersion"
+       (compiler_id, version_id)
+VALUES (2, 2),
+       (2, 3),
+       (2, 4);
+
+COMMIT;

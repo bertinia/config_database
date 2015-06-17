@@ -85,6 +85,26 @@ def commandline_options():
 # FIXME: work functions
 #
 # -------------------------------------------------------------------------------
+def search_for_sql_files(base_dir, file_list):
+    """
+    recursively search the directory tree, creating a list of all sql files
+    """
+    subdirlist = []
+    for entry in os.listdir(base_dir):
+        # append entry to path
+        file_path = os.path.join(base_dir, entry)
+         # determine whether a file or a directory
+        if os.path.isfile(file_path):
+            # is the file a config file?
+            if file_path.endswith('.sqlite'):
+                # if it's a config file, add it to the list
+                file_list.append(file_path)
+        else:
+            # add path to list of subdirectories
+            # ignare subdirs for now
+            subdirlist.append(file_path)
+
+
 def read_sql_script(filename, db_cursor):
     """
     """
@@ -103,11 +123,9 @@ def main(options):
     database = sqlite3.connect(':memory:')
     database.row_factory = sqlite3.Row
     db = database.cursor()
-    sqlfiles = ['src/sql/t_compiler.sql',
-                'src/sql/t_compilerVersion.sql',
-                'src/sql/t_compiler_compilerVersion.sql',
-                'src/sql/v_gnu_versions.sql',
-                ]
+    sqlfiles = []
+    search_for_sql_files('src/sql', sqlfiles)
+
     for sql in sqlfiles:
         read_sql_script(sql, db)
 

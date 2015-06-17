@@ -1,0 +1,23 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE `t_compiler` (
+  `compiler_id` unsigned integer(5) NOT NULL,
+  `name` varchar(20) DEFAULT NULL,
+  `description` text,
+  PRIMARY KEY(compiler_id)
+);
+
+CREATE TABLE `t_compilerVersion` (
+  `version_id` unsigned integer primary key not null,
+  `major` unsigned integer(4) NOT NULL,
+  `minor` unsigned integer(4) NOT NULL,
+  `patch` unsigned integer(4) NOT NULL,
+  `build` unsigned integer(4) NOT NULL
+); 
+
+CREATE TABLE `t_compiler_compilerVersion` (
+  `compiler_id` unsigned integer(5) NOT NULL,
+  `version_id` unsigned integer(5) NOT NULL
+);
+
+COMMIT;
